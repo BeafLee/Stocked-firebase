@@ -8,7 +8,7 @@ import Drawer from './Drawer';
 import LoggingStack from './LoggingStack';
 
 const AuthContext = createContext();
-console.log('CONDICIONAMIENTOSS ');
+//console.log('CONDICIONAMIENTOSS ');
 
 function SplashScreen() {
   return (

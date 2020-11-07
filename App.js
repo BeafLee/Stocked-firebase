@@ -3,7 +3,7 @@ import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 
-//import AccessCondition from './components/navigations/AccessCondition';
+import AccessCondition from './components/navigations/AccessCondition';
 import * as firebase from 'firebase';
 
 import { View, Text } from 'native-base';
@@ -19,16 +19,9 @@ const firebaseConfig = {
   measurementId: "G-TTMXNFTNDY"
 };
 
-console.log('access');
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-} else {
-  firebase.app();
-}
-
 export default class App extends React.Component {
   constructor(props) {
-    super (props);
+    super(props);
     this.state = {
       isReady: false,
     };
@@ -45,6 +38,14 @@ export default class App extends React.Component {
     }
     //console.log('llega?');
     //firebase.initializeApp(firebaseConfig); // No se porque da error >:v ---- 3.26.2 -> 3.27.4 
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+      console.log('inicializardo primera vez');
+    } else {
+      firebase.app();
+      console.log('Ya estaba inicializado');
+    }
   }
 
   render() {
@@ -53,10 +54,8 @@ export default class App extends React.Component {
     }
 
     return (
-      //<AccessCondition />
-      <View style={{flex:1 ,justifyContent:'center'}}>
-        <Text>NADAA si?</Text>
-      </View>
+      <AccessCondition />
+
     );
   }
 }
